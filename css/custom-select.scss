@@ -11,6 +11,8 @@
     left: 0;
     visibility: hidden;
     border: 1px solid gray;
+    max-height: 500px;
+    overflow: auto;
     z-index: 1;
   }
 
