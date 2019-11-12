@@ -1,23 +1,17 @@
-* {
-  box-sizing: border-box;
-}
-
 .js-custom-select {
-  //display: none;
+  display: none;
 }
 
 .custom-select {
-  display: inline-block;
   position: relative;
 
   .custom-select-list {
     position: absolute;
-    top: 100%;
+    top: calc(100% - 1px);
     left: 0;
-  }
-
-  .custom-select-list-hidden {
     visibility: hidden;
+    border: 1px solid gray;
+    z-index: 1;
   }
 
   .custom-select-option, .custom-select-trigger {
@@ -27,10 +21,21 @@
     padding: .5rem 1.5rem .5rem .5rem;
     font-size: 1.25rem;
     white-space: nowrap;
+    background-color: white;
+  }
+
+  .custom-select-option {
+    border: none;
+    transition: background-color .3s;
+
+    &:hover, &:focus {
+      background-color: darken(white, 10%);
+    }
   }
 
   .custom-select-trigger {
     position: relative;
+    border: 1px solid gray;
 
     &:after {
       content: '';
@@ -39,6 +44,7 @@
       border-color: black transparent transparent transparent;
       position: absolute;
       right: 5px;
+      transition: transform .3s;
     }
   }
 
@@ -46,5 +52,15 @@
     width: 1.25rem;
     height: 1.25rem;;
     margin-right: .25rem;
+  }
+
+  &.show {
+    .custom-select-list {
+      visibility: visible;
+    }
+
+    .custom-select-trigger:after {
+      transform: rotate(180deg);
+    }
   }
 }
